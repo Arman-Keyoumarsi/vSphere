@@ -36,9 +36,6 @@
 #>
 if($PSScriptRoot)
 {
-    # Load all the Libraries in "Lib" folder 
-    $Library = Get-ChildItem -File ($PSScriptRoot + "\Lib") | select Name -ExpandProperty fullname
-    foreach ($i in $library){. $i}
     $logFile = $PSScriptRoot + "\Log.txt"
     Start-Transcript $logFile
 }else{Start-Transcript ($env:USERPROFILE + "\Desktop\log.txt")}
@@ -51,13 +48,13 @@ Param(
 
   [Parameter(Mandatory=$True, HelpMessage="Enter the name of the cluster you want to create the Portgoups")][string]$Cluster,
   [Parameter(Mandatory=$True, HelpMessage="Enter the name of the vSwitch you want to create the Portgroup in")][string]$vSwitch,
-  [Parameter(Mandatory=$False, HelpMessage="Enter the name of the vSwitch you want to create the Portgroup in")][array]$PortGroup
+  [Parameter(Mandatory=$True, HelpMessage="NewPortGroup, Example PortGroup,13")][string]$PortGroup
 
 )
 
-if(!$PortGroup){
+if($PortGroup=""){
     #You can create multiple portgroup using the text file in the root directory
-    $PortGroup = Get-Content .\PortGroups.txt
+    $PortGroup = Get-Content .\NewPortGroups.txt
 }
 
 
@@ -74,12 +71,13 @@ Get-Cluster $Cluster | Get-VMHost |  % {
     
         Write-Host "Creating PortGroup $name with VLAN $VLAN in vSwitch $Vswitch at $VswitchVmHost "
     
-        #New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $Vswitch -Confirm:$false -WhatIf
+        New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $Vswitch -Confirm:$false -WhatIf
     
         }
     
     }
 }
-    NewPOrtGroups
+
+NewPOrtGroups
 ############################################################
 Stop-Transcript

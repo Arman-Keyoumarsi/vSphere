@@ -1,12 +1,12 @@
 ﻿**********************
 Windows PowerShell transcript start
-Start time: 20180724164025
+Start time: 20180724164659
 Username: DESKTOP-RJ25N9K\Arman
 RunAs User: DESKTOP-RJ25N9K\Arman
 Configuration Name: 
 Machine: DESKTOP-RJ25N9K (Microsoft Windows NT 10.0.17134.0)
-Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1
-Process ID: 2688
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command & 'C:\Users\Arman\.vscode\extensions\ms-vscode.powershell-1.7.0\modules\PowerShellEditorServices\Start-EditorServices.ps1' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @('PowerShellEditorServices.VSCode') -BundledModulesPath 'C:\Users\Arman\.vscode\extensions\ms-vscode.powershell-1.7.0\modules' -EnableConsoleRepl -LogLevel 'Normal' -LogPath 'C:\Users\Arman\.vscode\extensions\ms-vscode.powershell-1.7.0\logs\1532443242-ab777906-e6e4-4f34-a366-3265a680dd621532443240485\EditorServices.log' -SessionDetailsPath 'C:\Users\Arman\.vscode\extensions\ms-vscode.powershell-1.7.0\sessions\PSES-VSCode-13224-460034' -FeatureFlags @()
+Process ID: 14212
 PSVersion: 5.1.17134.165
 PSEdition: Desktop
 PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17134.165
@@ -17,54 +17,24 @@ PSRemotingProtocolVersion: 2.3
 SerializationVersion: 1.1.0.1
 **********************
 Transcript started, output file is C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\Log.txt
-Param : The term 'Param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check 
-the spelling of the name, or if a path was included, verify that the path is correct and try again.
-At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:50 
-char:1
-+ Param(
-+ ~~~~~
-    + CategoryInfo          : ObjectNotFound: (Param:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
-Param : The term 'Param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
-At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:50 char:1
-+ Param(
-+ ~~~~~
-    + CategoryInfo          : ObjectNotFound: (Param:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
 
-Get-Content : Cannot find path 'C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete 
-Portgroup\PortGroups.txt' because it does not exist.
-At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:60 
-char:18
-+     $PortGroup = Get-Content .\PortGroups.txt
-+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (C:\Users\Arman\...\PortGroups.txt:String) [Get-Content], 
-ItemNotFoundException
-    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
-Get-Content : Cannot find path 'C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\PortGroups.txt' because it does not exist.
-At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:60 char:18
-+     $PortGroup = Get-Content .\PortGroups.txt
-+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (C:\Users\Arman\...\PortGroups.txt:String) [Get-Content], ItemNotFoundException
-    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
-
-PS>TerminatingError(Get-Cluster): "Cannot validate argument on parameter 'Name'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again."
-Get-Cluster : Cannot validate argument on parameter 'Name'. The argument is null or empty. Provide an argument that is 
-not null or empty, and then try the command again.
+PS>TerminatingError(Get-Cluster): "7/24/2018 4:47:42 PM	Get-Cluster		You are not currently connected to any servers. Please connect first using a Connect cmdlet.	"
+Get-Cluster : 7/24/2018 4:47:42 PM	Get-Cluster		You are not currently connected to any servers. Please connect first 
+using a Connect cmdlet.	
 At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:64 
-char:13
+char:1
 + Get-Cluster $Cluster | Get-VMHost |  % {
-+             ~~~~~~~~
-    + CategoryInfo          : InvalidData: (:) [Get-Cluster], ParameterBindingValidationException
-    + FullyQualifiedErrorId : ParameterArgumentValidationError,VMware.VimAutomation.ViCore.Cmdlets.Commands.GetCluster
-Get-Cluster : Cannot validate argument on parameter 'Name'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
-At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:64 char:13
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [Get-Cluster], ViServerConnectionException
+    + FullyQualifiedErrorId : Core_BaseCmdlet_NotConnectedError,VMware.VimAutomation.ViCore.Cmdlets.Commands.GetCluster
+Get-Cluster : 7/24/2018 4:47:42 PM	Get-Cluster		You are not currently connected to any servers. Please connect first using a Connect cmdlet.
+At C:\Users\Arman\OneDrive - TechData\Scripts\GitHub\vSphere\Create Migrate and Delete Portgroup\New-PortGroup.ps1:64 char:1
 + Get-Cluster $Cluster | Get-VMHost |  % {
-+             ~~~~~~~~
-    + CategoryInfo          : InvalidData: (:) [Get-Cluster], ParameterBindingValidationException
-    + FullyQualifiedErrorId : ParameterArgumentValidationError,VMware.VimAutomation.ViCore.Cmdlets.Commands.GetCluster
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [Get-Cluster], ViServerConnectionException
+    + FullyQualifiedErrorId : Core_BaseCmdlet_NotConnectedError,VMware.VimAutomation.ViCore.Cmdlets.Commands.GetCluster
 
 **********************
 Windows PowerShell transcript end
-End time: 20180724164026
+End time: 20180724164743
 **********************
