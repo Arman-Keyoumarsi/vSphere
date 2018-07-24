@@ -1,6 +1,6 @@
 # Description
 
-The Set of script to help manage Portgroups in VMWare Standard switches.
+The Set of scripts to help manage Portgroups in VMWare Standard switches.
 
 ### Prerequisites
 
