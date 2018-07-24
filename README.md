@@ -18,16 +18,10 @@ For more details refer to [VMware PowerCLI Blog](https://blogs.vmware.com/PowerC
 
 You can clone the entire project or download the specific scripts and run them locally on your machine.
 
-Say what the step will be
-
 ```
 $ git clone https://github.com/Arman-Keyoumarsi/vSphere.git
 ```
 For more details refer to [Cloning a repository](https://help.github.com/articles/cloning-a-repository/)
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -42,10 +36,6 @@ Add additional notes about how to deploy this on a live system
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
