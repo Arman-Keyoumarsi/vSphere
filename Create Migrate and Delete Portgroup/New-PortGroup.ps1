@@ -1,37 +1,45 @@
 <# 
  
 .SYNOPSIS
-    This script is used xxxxxx 
+    This script is used Create new portgroup in a VMWare cluster. 
 
 .DESCRIPTION
-    This script is used as a template for all the PowerShell scripts
-    and contains all the predefined functions in "Lib" directory.
+    This script is used Create new portgroup in a VMWare cluster. It will do so by creating the portgroups
+    in an standard virtual switch inside each ESXi within the cluster.
 
-.PARAMETER  <Parameter-Name>
-    The description of a parameter. Add a .PARAMETER keyword for
-    each parameter in the function or script syntax.
+.PARAMETER  Cluster
+    Name of the VMWare Cluster you want to create the portgroups in.
+
+.PARAMETER  vSwitch
+    Name of the Standard virtual switch you want to create the portgroups in.
+    Note, vSwitch should exist in the cluster
+
+.PARAMETER  PortGroup
+    Name of the Portgroup and its associated VLAN. it should be inserted in an array format
 
 .EXAMPLE
-    A sample command that uses the function or script, optionally followed
-    by sample output and a description. Repeat this keyword for each example.
+    .\NewPortGroup.ps1
+    cmdlet  at command pipeline position 1
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    Cluster: Name Of the Cluster
+    vSwitch: vSwitch02
+
+.EXAMPLE
+    .\NewPortGroup.ps1 -Cluster "ClusterNAme" -vSwitch "vSwitch2" -PortGroup "NewPortGroup,13(VLANID)" -Confirm
 
 .INPUTS
-    The Microsoft .NET Framework types of objects that can be piped to the
-    function or script. You can also include a description of the input 
-    objects.
+    Optionally portgroups can be added in a text file and be added to the root of the directory.
 
 .OUTPUTS
-    The .NET Framework type of the objects that the cmdlet returns. You can
-    also include a description of the returned objects.
+    Log.txt will be either in the script directory or will be created on user desktop.
 
 .LINK
     None
 
 .NOTES
-    File Name  	: xxxx.ps1
+    File Name  	: New-PortGroup.ps1
     Author     	: Arman Keyoumarsi
-    Date		: 30:05:2016
-
 
 #>
 if($PSScriptRoot)
@@ -41,43 +49,42 @@ if($PSScriptRoot)
 }else{Start-Transcript ($env:USERPROFILE + "\Desktop\log.txt")}
 #############################################################
 #Importing all the necessary modules
-#Import-Module VMware.PowerCLI
-Function NewPOrtGroups{
+Import-Module VMware.PowerCLI
+Function NewPortGroups{
 #Input Variables
 Param(
 
   [Parameter(Mandatory=$True, HelpMessage="Enter the name of the cluster you want to create the Portgoups")][string]$Cluster,
-  [Parameter(Mandatory=$True, HelpMessage="Enter the name of the vSwitch you want to create the Portgroup in")][string]$vSwitch,
-  [Parameter(Mandatory=$True, HelpMessage="NewPortGroup, Example PortGroup,13")][string]$PortGroup
-
+  [Parameter(Mandatory=$True, HelpMessage="Enter the name of the vSwitch Example vSwitch2")][string]$vSwitch,
+  [Parameter(Mandatory=$False, HelpMessage="NewPortGroup, Example PortGroup,13")][array]$PortGroup,
+  [switch]$Confirm #this is a switch for confirm with default value of $Flase 
 )
 
-if($PortGroup=""){
-    #You can create multiple portgroup using the text file in the root directory
+if(!$PortGroup){
+    #You can create multiple Portgroup using the text file in the root directory
     $PortGroup = Get-Content .\NewPortGroups.txt
 }
 
-
 Get-Cluster $Cluster | Get-VMHost |  % {
 
-    $Vswitch = Get-VirtualSwitch -VMHost $_  -Name vSwitch2
+    $Vswitch = Get-VirtualSwitch -VMHost $_  -Name $vSwitch
     $VswitchVmHost = $Vswitch.VMHost
     
+    #Looping through the array
     $PortGroup |  % {
-    
-    
+        
         $Name = ($_.split(","))[0]
         $VLAN = ($_.split(","))[1]
     
         Write-Host "Creating PortGroup $name with VLAN $VLAN in vSwitch $Vswitch at $VswitchVmHost "
-    
-        New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $Vswitch -Confirm:$false -WhatIf
+        #~Creating the vSwitch
+        New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $Vswitch -Confirm:$Confirm
     
         }
     
     }
 }
 
-NewPOrtGroups
+NewPortGroups
 ############################################################
 Stop-Transcript
