@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need the latest PowerCLI module installed in your system to be able to run these scripts.
+You need the latest PowerCLI module installed on your system to be able to run these scripts.
 ```Powershell
 Install-Module -Name VMware.PowerCLI
 ```
