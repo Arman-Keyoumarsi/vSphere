@@ -45,7 +45,7 @@ if($PSScriptRoot)
 #############################################################
 #Importing all the necessary modules
 #Import-Module VMware.PowerCLI
-
+Function NewPOrtGroups{
 #Input Variables
 Param(
 
@@ -80,5 +80,6 @@ Get-Cluster $Cluster | Get-VMHost |  % {
     
     }
 
+    NewPOrtGroups
 ############################################################
 Stop-Transcript
