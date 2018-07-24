@@ -79,7 +79,7 @@ Get-Cluster $Cluster | Get-VMHost |  % {
         }
     
     }
-
+}
     NewPOrtGroups
 ############################################################
 Stop-Transcript
