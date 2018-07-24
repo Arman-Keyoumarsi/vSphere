@@ -23,3 +23,6 @@ For more details refer to [VMware PowerCLI Blog](https://blogs.vmware.com/PowerC
 ```
     .\NewPortGroup.ps1 -Cluster "ClusterNAme" -vSwitch "vSwitch2" -PortGroup "NewPortGroup,13(VLANID)" -Confirm
 ```
+### Disclaimer 
+
+[The author] assumes no responsibility or liability for any errors or omissions or miss use of the scripts. Use at your own risk.
