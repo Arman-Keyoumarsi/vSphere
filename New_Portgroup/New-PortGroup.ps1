@@ -67,8 +67,8 @@ if(!$PortGroup){
 
 Get-Cluster $Cluster | Get-VMHost |  % {
 
-    $Vswitch = Get-VirtualSwitch -VMHost $_  -Name $vSwitch
-    $VswitchVmHost = $Vswitch.VMHost
+    $vSwitch01 = Get-VirtualSwitch -VMHost $_  -Name $vSwitch
+    $VswitchVmHost = $vSwitch01.VMHost
     
     #Looping through the array
     $PortGroup |  % {
@@ -76,9 +76,9 @@ Get-Cluster $Cluster | Get-VMHost |  % {
         $Name = ($_.split(","))[0]
         $VLAN = ($_.split(","))[1]
     
-        Write-Host "Creating PortGroup $name with VLAN $VLAN in vSwitch $Vswitch at $VswitchVmHost "
+        Write-Host "Creating PortGroup $name with VLAN $VLAN in vSwitch $vSwitch01  at $VswitchVmHost "
         #~Creating the vSwitch
-        New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $Vswitch -Confirm:$Confirm
+        New-VirtualPortGroup -Name $Name -VLanId $VLAN -VirtualSwitch $vSwitch01 -Confirm:$Confirm
     
         }
     
