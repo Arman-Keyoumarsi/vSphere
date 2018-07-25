@@ -2,6 +2,8 @@
 
 This project contains all the related scripts and code use to automate various vSphere tasks.
 
+### `(If you like these scripts or using it, please give a :star: for motivation.)`
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Each script/code will live within its folder, see README for each script on how to deploy/Use them on a live system.
