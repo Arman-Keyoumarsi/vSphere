@@ -1,6 +1,7 @@
 # Description
 
-The Set of scripts to help manage Portgroups in VMWare Standard switches.
+his script is used to Create new portgroup in a VMWare cluster. It will do so by creating the portgroups
+in an standard virtual switch inside each ESXi within the cluster.
 
 ### Prerequisites
 
