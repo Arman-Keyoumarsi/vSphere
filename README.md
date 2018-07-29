@@ -1,6 +1,6 @@
 # vSphere
 
-This project contains all the related scripts and code use to automate various vSphere tasks.
+This project contains all the related scripts and codes use to automate various vSphere tasks.
 
 ### *(If you like these scripts or using them, please give a :star: for motivation.)*
 
